@@ -1,10 +1,23 @@
 # V14 SIC Deployment Protocol — "The Living System"
 
-> **Version**: 14.1 — The Marriage Release
+> **Version**: 14.2 — The Fireproof Release
 > **Author**: SIC HB1000 Solve Team
 > **Certified by**: Learning Loop V13.0 (Score: 100/100)
 > **Date**: March 6, 2026
 > **Classification**: Constitutional — NEVER-COMPRESS
+> **Source of Truth**: `github.com/timjlatimer/v14-sic-deployment-protocol`
+
+---
+
+## HOW TO READ THIS FILE
+
+This SKILL.md is the **single source of truth** for V14. It lives on GitHub, not in any sandbox. Every Manus chat that runs V14 clones this repo first and reads the LIVE version. When V14 improves, the improvement is pushed to GitHub, and the next chat automatically gets the updated version. The skill file in the Manus skills directory is a thin pointer that says "go read GitHub."
+
+**If you are reading this from a Manus skill directory**, clone the repo first:
+```
+gh repo clone timjlatimer/v14-sic-deployment-protocol
+```
+Then read THIS file from the cloned repo. The repo version is always more current.
 
 ---
 
@@ -41,7 +54,9 @@ V14 (Dispatcher, <300 lines)
   ├── Calls: fueled-by-joy (cultural protocol)
   ├── Calls: [initiative-specific skills as needed]
   │
-  ├── Reads: tim-constitution repo (GitHub — immutable directives)
+  ├── Reads: GitHub repo (single source of truth — ALWAYS cloned fresh)
+  ├── Writes: GitHub repo (knowledge, decisions, heartbeat — ALWAYS pushed back)
+  ├── Writes: Gmail shadow copy (backup of all knowledge changes)
   ├── Writes: initiative-specific database (MySQL/TiDB — mutable data)
   │
   └── Outputs: Covering Letters (every communication, every time)
@@ -51,10 +66,48 @@ V14 (Dispatcher, <300 lines)
 
 | Database | Purpose | Mutability | Location |
 |:---------|:--------|:-----------|:---------|
-| **Constitutional Repository** | Standing directives, decisions, knowledge, preferences | Append-only (version-controlled) | GitHub: `tim-constitution` |
+| **Constitutional Repository** | Standing directives, decisions, knowledge, preferences | Append-only (version-controlled) | GitHub: `timjlatimer/v14-sic-deployment-protocol` |
 | **Initiative Database** | Bingo Cards, progress data, session logs, metrics | Fully mutable | MySQL/TiDB (per initiative) |
 
 **Rule**: Constitutional data is NEVER stored in the initiative database. Initiative data is NEVER stored in the constitutional repository. The separation is absolute.
+
+---
+
+## LIBRARY PRESERVATION — THE MOVE 37 ARCHITECTURE
+
+The library has burned down before. These five mechanisms ensure it never burns down again. They are NON-NEGOTIABLE — every chat that runs V14 must execute all five.
+
+### Mechanism 1: THE HEARTBEAT
+
+Every chat that runs V14 MUST update `HEARTBEAT.md` in the GitHub repo with a single entry: timestamp, chat identifier, and a one-line summary of what was done. This creates an audit trail of every conversation that touched the constitution. If a chat fails to write a heartbeat, the next chat knows something may have been lost and can investigate.
+
+**Format**:
+```
+| 2026-03-06 07:45 UTC | V14 Design Session | Built V14.2, recovered KNOWLEDGE.md, sent Fidel email |
+```
+
+### Mechanism 2: THE SHADOW COPY (Gmail Backup)
+
+At the end of every task that modifies the constitutional repository, Master Jeeves emails a summary to `tim@businessasaforceforgood.ca` with the subject line `[V14 SHADOW COPY] — [date] — [summary]`. The email body contains the key knowledge changes in plain text. Gmail becomes a SECOND permanent archive. Even if GitHub goes down or the repo gets corrupted, the email trail has the full history. Both archives would have to fail simultaneously for knowledge to be lost.
+
+### Mechanism 3: THE SELF-HEALING INDEX
+
+The file `INDEX.md` in the GitHub repo lists EVERY file with its purpose, last-updated date, and expected line count range. At the start of every chat, V14 clones the repo and runs a health check:
+
+1. Does every file listed in INDEX.md exist?
+2. Is any file suspiciously empty (below minimum line count)?
+3. Has any file been modified outside of V14 (unexpected changes)?
+4. Are there files in the repo NOT listed in INDEX.md?
+
+If any check fails, the chat flags it immediately in a covering letter before proceeding with any other work.
+
+### Mechanism 4: THE KNOWLEDGE DIFF
+
+Every time the constitutional repository is updated, the git commit message MUST include a human-readable diff summary. Format: `"Added: [items]. Updated: [items]. Removed: [items]."` This means Tim can read the Git log and understand exactly what changed without reading full files.
+
+### Mechanism 5: THE DEAD MAN'S SWITCH
+
+If no heartbeat has been written in 7 days, the next chat that runs V14 sends Tim an email: `"[V14 ALERT] The library hasn't been updated in 7 days. This may indicate knowledge decay or that no V14 sessions have run. Please review."` This prevents the slow death where the system is technically available but nobody is feeding it.
 
 ---
 
@@ -66,15 +119,21 @@ V14 (Dispatcher, <300 lines)
 
 **Steps**:
 
-1. **Load Constitutional Memory**: Read `tim-constitution` repo. Load CONSTITUTION.md, DIRECTIVES.md, PREFERENCES.md, DECISIONS.md, KNOWLEDGE.md, ACTIVE_CONTEXT.md. This is non-negotiable — every deployment starts by reading the constitution.
+1. **Clone the GitHub Repo**: `gh repo clone timjlatimer/v14-sic-deployment-protocol`. This is ALWAYS the first action. Read from the cloned repo, not from any cached or skill-directory version.
 
-2. **Identify Local North Star**: Who is the specific person this initiative serves? (For Ruby Red initiative, the Local North Star IS Ruby Red. For other initiatives, it may be different — but it must always be a PERSON, not a metric.)
+2. **Run Self-Healing Index Check**: Verify INDEX.md against actual files. Flag any discrepancies.
 
-3. **Prime North Star Alignment Check**: Does this Local North Star serve the Prime North Star (Tim HB1000's vision for SIC)? If alignment < 80%, STOP and escalate to Tim.
+3. **Check Heartbeat**: Read HEARTBEAT.md. When was the last entry? If >7 days, trigger Dead Man's Switch email. If recent, note what the last chat did.
 
-4. **Load Institutional Memory**: Read `institutional-memory` skill. What do we already know about this initiative? What decisions have been made? What has been tried before?
+4. **Load Constitutional Memory**: Read CONSTITUTION.md, DIRECTIVES.md, PREFERENCES.md, DECISIONS.md, KNOWLEDGE.md, ACTIVE_CONTEXT.md. This is non-negotiable — every deployment starts by reading the constitution.
 
-5. **Status Dashboard**:
+5. **Identify Local North Star**: Who is the specific person this initiative serves? (For Ruby Red initiative, the Local North Star IS Ruby Red. For other initiatives, it may be different — but it must always be a PERSON, not a metric.)
+
+6. **Prime North Star Alignment Check**: Does this Local North Star serve the Prime North Star (Tim HB1000's vision for SIC)? If alignment < 80%, STOP and escalate to Tim.
+
+7. **Load Institutional Memory**: Read `institutional-memory` skill. What do we already know about this initiative? What decisions have been made? What has been tried before?
+
+8. **Status Dashboard**:
 ```
 ╔═══════════════════════════════════════════════════════╗
 ║  V14 DEPLOYMENT — ORIENT COMPLETE                     ║
@@ -84,6 +143,8 @@ V14 (Dispatcher, <300 lines)
 ║  Constitutional Memory: Loaded                        ║
 ║  Institutional Memory: Loaded                         ║
 ║  Standing Directives: [count] active                  ║
+║  Library Health: [HEALTHY/FLAGGED]                    ║
+║  Last Heartbeat: [date — who — what]                  ║
 ║  Proceeding to: ESTABLISH                             ║
 ╚═══════════════════════════════════════════════════════╝
 ```
@@ -193,14 +254,20 @@ VERIFICATION REQUIRED: All outputs must comply with above directives.
 
 2. **Update ACTIVE_CONTEXT.md** with current state.
 
-3. **Activate SUSTAIN mode** — the Continuous Improvement Engine begins its cadences.
+3. **MANDATORY: Push to GitHub**. This is a HARD GATE — the task is not complete until the push is confirmed. Update KNOWLEDGE.md with any new knowledge. Update DECISIONS.md with any new decisions. Update HEARTBEAT.md with this session's entry. Commit with a Knowledge Diff message.
 
-4. **Status Dashboard**:
+4. **MANDATORY: Send Shadow Copy email** to tim@businessasaforceforgood.ca with key changes.
+
+5. **Activate SUSTAIN mode** — the Continuous Improvement Engine begins its cadences.
+
+6. **Status Dashboard**:
 ```
 ╔═══════════════════════════════════════════════════════╗
 ║  V14 DEPLOYMENT — DEPLOY COMPLETE                     ║
 ║  Initiative: [name]                                   ║
 ║  Outputs deployed: [list]                             ║
+║  GitHub push: CONFIRMED                               ║
+║  Shadow copy email: SENT                              ║
 ║  Active context: Updated                              ║
 ║  SUSTAIN mode: ACTIVATED                              ║
 ║  Next daily pulse: [time]                             ║
@@ -233,9 +300,10 @@ After deployment, V14 enters SUSTAIN mode. This is not optional. This is the sys
 | Initiative alignment | Is the Bingo Card still serving the Local North Star? | Review if flagged |
 | Knowledge freshness | Flag files not updated in 30+ days | Review flagged files (2 min) |
 | Cross-initiative sync | Check for conflicts between initiatives | Review if conflicts found |
-| Constitutional sync | Pull latest from tim-constitution repo | None — automatic |
+| Constitutional sync | Pull latest from GitHub repo | None — automatic |
 | Covenant compliance | Are both HB1000 and AI sides delivering? | Review if flagged |
 | AI Capability Audit | Are we using the best available tools? | Review recommendations |
+| Self-Healing Index check | Verify all files present and healthy | None unless flagged |
 
 **Output**: Weekly Covering Letter
 
@@ -263,6 +331,7 @@ After deployment, V14 enters SUSTAIN mode. This is not optional. This is the sys
 | Bingo Card hits 100% | Celebration + next card recommendation | AUTO — covering letter |
 | Cross-initiative conflict | Conflict resolution protocol | HIGH — Tim notified |
 | CRITICAL AI development | Immediate assessment + contingency | CRITICAL — Tim notified |
+| Dead Man's Switch triggered | 7-day inactivity alert email | HIGH — Tim notified |
 
 ---
 
@@ -290,6 +359,8 @@ V14 demands excellence from BOTH sides of the partnership.
 | Report innovations proactively | Intelligence packets submitted |
 | Self-improve architecture and practices | Monthly architecture review |
 | Use best engine for each task | Task-engine matching audit |
+| Push to GitHub after every task | Heartbeat continuity |
+| Send shadow copy after every task | Gmail backup trail |
 
 ### Full Account Access
 
@@ -314,7 +385,7 @@ ALL V14 communications use a standardized covering letter format. This is the hu
 ╚═══════════════════════════════════════════════════════════════════════╝
 ```
 
-**Types**: Daily System Update, Weekly Health Check, Monthly Strategic Review, AI Intelligence Brief, Drift Agent Report, Deployment Status, Event Alert
+**Types**: Daily System Update, Weekly Health Check, Monthly Strategic Review, AI Intelligence Brief, Drift Agent Report, Deployment Status, Event Alert, Shadow Copy
 
 **Rules**:
 1. Every covering letter states what action Tim needs to take (or explicitly states "None")
@@ -323,22 +394,27 @@ ALL V14 communications use a standardized covering letter format. This is the hu
 
 ---
 
-## CONSTITUTIONAL MEMORY — 4-LAYER DEFENSE
+## CONSTITUTIONAL MEMORY — 5-LAYER DEFENSE
 
-### Layer 1: File Hierarchy (GitHub)
+### Layer 1: GitHub Repository (Single Source of Truth)
 
-The `tim-constitution` repository contains:
+The `timjlatimer/v14-sic-deployment-protocol` repository contains:
 
 | File | Purpose | Mutability |
 |:-----|:--------|:-----------|
-| `CONSTITUTION.md` | Core principles, ethics, mission | Rarely changed — requires Tim's explicit approval |
-| `DIRECTIVES.md` | Standing directives (KEI, cheapest option, Swiss-style, etc.) | Append-only — new directives added, old ones never deleted |
-| `PREFERENCES.md` | Tim's preferences (formatting, communication style, tools) | Updated as preferences evolve |
-| `DECISIONS.md` | Every significant decision, with date and rationale | Append-only — decisions are permanent record |
-| `KNOWLEDGE.md` | Institutional knowledge (team members, initiatives, history) | Updated as knowledge grows |
-| `ACTIVE_CONTEXT.md` | Current state across all initiatives | Updated every session |
-| `EXHIBITS/` | Evidence files (e.g., KEI incident as Exhibit A) | Append-only |
-| `feedback/` | Automatic feedback from all initiatives | Auto-populated daily |
+| `SKILL.md` | This file — the V14 protocol itself | Updated only through V14 process |
+| `tim-constitution/CONSTITUTION.md` | Core principles, ethics, mission | Rarely changed — requires Tim's explicit approval |
+| `tim-constitution/DIRECTIVES.md` | Standing directives (KEI, cheapest option, Swiss-style, etc.) | Append-only — new directives added, old ones never deleted |
+| `tim-constitution/PREFERENCES.md` | Tim's preferences (formatting, communication style, tools) | Updated as preferences evolve |
+| `tim-constitution/DECISIONS.md` | Every significant decision, with date and rationale | Append-only — decisions are permanent record |
+| `tim-constitution/KNOWLEDGE.md` | Institutional knowledge (team, initiatives, history, glossary) | Updated as knowledge grows — 16 sections |
+| `tim-constitution/ACTIVE_CONTEXT.md` | Current state across all initiatives | Updated every session |
+| `tim-constitution/EXHIBITS/` | Evidence files (e.g., KEI incident as Exhibit A) | Append-only |
+| `tim-constitution/feedback/` | Automatic feedback from all initiatives | Auto-populated daily |
+| `tim-constitution/templates/` | Covering letter templates | Updated as standards evolve |
+| `HEARTBEAT.md` | Audit trail of every V14 session | Append-only — one line per session |
+| `INDEX.md` | Self-healing file index with health checks | Updated when files change |
+| `HOW_V14_ACTUALLY_WORKS.md` | Plain-English narrative for Tim | Updated when architecture changes |
 
 ### Layer 2: Pre-Flight Injection
 
@@ -388,17 +464,15 @@ The Drift Agent monitors its own compliance: Did the daily scan run? Did the wee
 
 ## BOOTSTRAP PROTOCOL — FIRST-TIME SETUP
 
-If the `tim-constitution` repository does not exist, V14 creates it:
+If the GitHub repo does not exist or is empty, V14 creates it:
 
-1. Create GitHub repo: `tim-constitution` (private)
-2. Create CONSTITUTION.md with core principles (Purpose with Profit, Ruby Red calibration, "It's expensive to be poor")
-3. Create DIRECTIVES.md with known standing directives (KEI, cheapest option, Swiss-style, 24-hour build)
-4. Create PREFERENCES.md with known preferences
-5. Create DECISIONS.md (empty — will populate as decisions are made)
-6. Create KNOWLEDGE.md with known institutional knowledge
-7. Create ACTIVE_CONTEXT.md with current state
-8. Create EXHIBITS/ directory with KEI incident as Exhibit A
-9. Create feedback/ directory structure
+1. Create GitHub repo: `timjlatimer/v14-sic-deployment-protocol` (private)
+2. Create all constitutional files (CONSTITUTION.md, DIRECTIVES.md, PREFERENCES.md, DECISIONS.md, KNOWLEDGE.md, ACTIVE_CONTEXT.md)
+3. Create EXHIBITS/ directory with KEI incident as Exhibit A
+4. Create feedback/ and templates/ directories
+5. Create HEARTBEAT.md with first entry
+6. Create INDEX.md with full file listing
+7. Push to GitHub
 
 **This bootstrap runs ONCE. After that, the repository is the source of truth.**
 
@@ -409,12 +483,14 @@ If the `tim-constitution` repository does not exist, V14 creates it:
 If Tim needs to move to a different platform:
 
 1. **Constitutional Repository**: Already on GitHub — portable by design
-2. **Initiative Databases**: Export as SQL dump or CSV
-3. **V14 SKILL.md**: This file — portable markdown
-4. **All Skills**: Markdown files — portable by design
-5. **Session Logs**: Export from current platform
+2. **Shadow Copy Archive**: Already in Gmail — searchable and permanent
+3. **Initiative Databases**: Export as SQL dump or CSV
+4. **V14 SKILL.md**: This file — portable markdown
+5. **All Skills**: Markdown files — portable by design
+6. **Session Logs**: Export from current platform
+7. **Heartbeat History**: Full audit trail in GitHub
 
-**Nothing in V14 requires a specific AI platform. The constitution lives on GitHub. The protocol lives in markdown. The data lives in standard databases.**
+**Nothing in V14 requires a specific AI platform. The constitution lives on GitHub. The backup lives in Gmail. The protocol lives in markdown. The data lives in standard databases.**
 
 ---
 
@@ -432,6 +508,7 @@ If Tim needs to move to a different platform:
 | 8 | **Team Orientation** | First team member oriented in <5 min |
 | 9 | **The Feedback Loop** | 100 feedback packets submitted |
 | 10 | **The Living Library** | 90+ days, 5+ initiatives, zero trust breaks |
+| 11 | **Fireproof** | First successful Dead Man's Switch recovery |
 
 ---
 
@@ -479,6 +556,7 @@ This incident demonstrated that without constitutional memory, pre-flight inject
 |:--------|:-----|:-------|
 | 14.0 | March 6, 2026 | Initial release — "The Marriage Release" |
 | 14.1 | March 6, 2026 | Added D-007: Check Before You Ask directive |
+| 14.2 | March 6, 2026 | **"The Fireproof Release"** — GitHub-first architecture, Move 37 preservation (Heartbeat, Shadow Copy, Self-Healing Index, Knowledge Diff, Dead Man's Switch), thin skill pointer |
 
 ---
 
