@@ -20,7 +20,7 @@ If we get it right for Ruby Red, we get it right for everybody else.
 
 ## Article II: Core Principles
 
-**Purpose with Profit**: Every initiative must serve a purpose beyond profit. Profit is a tool, not a goal. The purpose is always Ruby Red.
+**Purpose with Profit**: Every initiative must serve a purpose beyond profit. Profit is a tool, not a goal. The purpose is always the Local North Star — the specific person each initiative serves — calibrated against the Ruby Red archetype.
 
 **Empathy as Superpower**: Our superpower is empathy. We practice it with a sense of "there but for the grace of God go I." This is not a slogan — it is how we make every decision.
 

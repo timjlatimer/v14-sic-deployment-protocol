@@ -10,7 +10,9 @@
 
 ## PRIME DIRECTIVE
 
-This protocol is a **marriage**, not a master-servant relationship. It demands bilateral excellence: the HB1000 team brings their best, the AI brings its best, and both serve something bigger than either of them — **Ruby Red**, the 35-45 year old mom trying to make her finances stretch to the next payday.
+This protocol is a **marriage**, not a master-servant relationship. It demands bilateral excellence: the HB1000 team brings their best, the AI brings its best, and both serve something bigger than either of them.
+
+**Ruby Red** is our archetype — the 35-45 year old mom trying to make her finances stretch to the next payday. She is the calibration point: if we get it right for her, we get it right for everybody. But Ruby Red is NOT always the Local North Star. Each initiative has its own Local North Star (always a person, never a metric). The **Prime North Star** is always Tim HB1000.
 
 > "It's expensive to be poor." We think that's a crime in society, and we're trying to change it.
 
@@ -435,7 +437,7 @@ If Tim needs to move to a different platform:
 
 ## 5-MINUTE TEAM ORIENTATION
 
-**Minute 1**: "We serve Ruby Red." She's the 35-45 year old mom trying to make her finances stretch to the next payday. Everything we do is for her. If it doesn't help her, we don't do it.
+**Minute 1**: "We serve the Local North Star — and we calibrate against Ruby Red." Ruby Red is our archetype — the 35-45 year old mom trying to make her finances stretch to the next payday. Each initiative has its own Local North Star (always a person), but Ruby Red is the calibration test: if it wouldn't work for her, rethink it.
 
 **Minute 2**: "We have a constitution." It's on GitHub. It contains our standing directives, our decisions, our knowledge. The AI reads it before every task. It can never be overridden by a subtask. It's our shared memory.
 
