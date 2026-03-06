@@ -1,6 +1,6 @@
 # V14 SIC Deployment Protocol — "The Living System"
 
-> **Version**: 14.2 — The Fireproof Release
+> **Version**: 14.3 — The Fireproof Release
 > **Author**: SIC HB1000 Solve Team
 > **Certified by**: Learning Loop V13.0 (Score: 100/100)
 > **Date**: March 6, 2026
@@ -153,9 +153,19 @@ If no heartbeat has been written in 7 days, the next chat that runs V14 sends Ti
 
 **Purpose**: Set up the infrastructure for this initiative.
 
+**FIRST DEPLOYMENT GATE**: On the FIRST deployment of V14 on any initiative, ESTABLISH must STOP after completing its checks and present findings to Tim. Do NOT proceed to EVALUATE or BUILD without Tim's explicit approval. This is non-negotiable. The AI reports what exists and what's missing — Tim decides what happens next.
+
 **Steps**:
 
-1. **Bootstrap Check**: Does this initiative already have a database? If not, create one (MySQL/TiDB). Does it have a Bingo Card? If not, create one.
+1. **Bootstrap Check**: Does this initiative already have a database? If not, note it (do NOT create without Tim's approval on first deployment). Does it have a Bingo Card? If not, present Tim with three options:
+
+| Option | What Happens |
+|:-------|:-------------|
+| **A: Tim provides a sample Bingo Card** | Tim supplies a template, sample, or starting framework. The AI uses it as the foundation. |
+| **B: Leave it vacant** | No Bingo Card is created. The initiative proceeds without one until Tim decides it's time. |
+| **C: Build one together** | Tim and the AI collaborate to build the Bingo Card in real-time, with Tim directing. |
+
+**The AI NEVER builds a Bingo Card on its own.** Tim controls this completely.
 
 2. **Configure V13 Intensity**: How rigorous should the Learning Loop be for this initiative?
 
@@ -557,6 +567,7 @@ This incident demonstrated that without constitutional memory, pre-flight inject
 | 14.0 | March 6, 2026 | Initial release — "The Marriage Release" |
 | 14.1 | March 6, 2026 | Added D-007: Check Before You Ask directive |
 | 14.2 | March 6, 2026 | **"The Fireproof Release"** — GitHub-first architecture, Move 37 preservation (Heartbeat, Shadow Copy, Self-Healing Index, Knowledge Diff, Dead Man's Switch), thin skill pointer |
+| 14.3 | March 6, 2026 | **First Deployment Gate** — ESTABLISH stops on first deployment, waits for Tim. Bingo Card control (provide sample / leave vacant / build together). AI never builds Bingo Cards unsupervised. |
 
 ---
 
