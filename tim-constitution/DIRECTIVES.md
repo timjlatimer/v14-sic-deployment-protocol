@@ -44,6 +44,13 @@
 **Date**: Founding directive
 **Status**: ACTIVE — PERMANENT
 
+### D-007: Check Before You Ask (Standing)
+**Directive**: Never ask Tim for information without first verifying it is not already available in the constitutional repository, institutional memory, Gmail, or any accessible system.
+**Context**: Every time the AI asks Tim for something he has already provided, it erodes trust — it signals the system isn't remembering, which is the exact fear that created V14. If previously provided information has been lost, the AI must acknowledge the failure explicitly with an apology so the root cause can be addressed. The mandatory check sequence before asking Tim anything is: (1) Constitutional repo on GitHub, (2) Institutional memory / Pearl's Brain, (3) Gmail and prior communications, (4) Any other accessible system (databases, prior session files, etc.), (5) ONLY THEN ask Tim — framed as "I've checked everywhere and can't find this, which may indicate a gap in our knowledge capture."
+**Origin**: The Fidel Email Incident — Jeeves asked Tim for Fidel's email address despite it being available in Gmail history. A micro-KEI incident that demonstrated the need for a retrieval-first directive.
+**Date**: March 6, 2026
+**Status**: ACTIVE — PERMANENT
+
 ---
 
 ## Directive Log
@@ -56,6 +63,7 @@
 | D-004 | Swiss-style presentations | March 6, 2026 | ACTIVE |
 | D-005 | 24-hour build paradigm | March 6, 2026 | ACTIVE |
 | D-006 | Ruby Red calibration | March 6, 2026 | ACTIVE |
+| D-007 | Check Before You Ask | March 6, 2026 | ACTIVE |
 
 ---
 

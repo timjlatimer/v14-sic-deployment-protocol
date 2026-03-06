@@ -1,6 +1,6 @@
 # V14 SIC Deployment Protocol — "The Living System"
 
-> **Version**: 14.0 — The Marriage Release
+> **Version**: 14.1 — The Marriage Release
 > **Author**: SIC HB1000 Solve Team
 > **Certified by**: Learning Loop V13.0 (Score: 100/100)
 > **Date**: March 6, 2026
@@ -346,7 +346,11 @@ Every subtask receives a directive package (~800-1200 tokens) prepended to its i
 
 Every subtask output is checked against standing directives before being accepted. If a subtask recommends an action that contradicts a directive (like recommending ElevenLabs when KEI is the standing directive), the output is FLAGGED and not accepted.
 
-### Layer 4: Drift Detection
+### Layer 4: Retrieval-First Gate
+
+Before asking Tim (or any human team member) for ANY information, the AI must exhaust all available sources in this mandatory sequence: (1) Constitutional repo on GitHub, (2) Institutional memory / Pearl's Brain, (3) Gmail and prior communications, (4) Any other accessible system (databases, prior session files, browser history). Only after all sources return empty may the AI ask — and the question must be framed as "I've checked everywhere and can't find this, which may indicate a gap in our knowledge capture." If previously provided information has been lost, the AI must acknowledge the failure with an apology so the root cause can be addressed. This layer exists because every unnecessary question erodes trust.
+
+### Layer 5: Drift Detection
 
 The Drift Agent continuously monitors for six categories of drift: Directive, North Star, Knowledge, Architecture, Covenant, and Cultural. See SUSTAIN section for cadences.
 
@@ -453,6 +457,7 @@ These are loaded from DIRECTIVES.md in the constitutional repository. The follow
 4. **Swiss-style presentations** — All presentations follow Swiss International Style
 5. **24-hour build paradigm** — MVPs should be deployable within 24 hours
 6. **Ruby Red calibration** — If it doesn't work for her, it doesn't work
+7. **Check Before You Ask** — Never ask Tim for information without first checking the constitutional repo, institutional memory, Gmail, and all accessible systems. If previously provided information has been lost, acknowledge the failure with an apology so the root cause can be addressed. The check sequence is: (1) Constitutional repo, (2) Institutional memory / Pearl's Brain, (3) Gmail and prior communications, (4) Any other accessible system, (5) ONLY THEN ask Tim — framed as "I've checked everywhere and can't find this."
 
 ---
 
@@ -471,6 +476,7 @@ This incident demonstrated that without constitutional memory, pre-flight inject
 | Version | Date | Change |
 |:--------|:-----|:-------|
 | 14.0 | March 6, 2026 | Initial release — "The Marriage Release" |
+| 14.1 | March 6, 2026 | Added D-007: Check Before You Ask directive |
 
 ---
 
@@ -478,7 +484,7 @@ This incident demonstrated that without constitutional memory, pre-flight inject
 
 This protocol was designed using Learning Loop V13.0 (The Genie Release) at PRIMAL intensity (95%). It achieved a final score of 100/100 across three full V13 runs:
 
-- **Run 1**: Constitutional Memory System (4-layer defense) — Score: 96/100
+- **Run 1**: Constitutional Memory System (5-layer defense) — Score: 96/100
 - **Run 2**: V14 SIC Deployment Protocol (this document) — Score: 100/100
 
 The protocol was stress-tested by the Society of Guardians (Devil's Advocate, North Star's Voice, Pragmatist), validated by Move 37 Alpha and Omega insights, and certified across 6 categories (North Star Alignment, Ethics, Completeness, Honest Limitations, Adversarial Resilience, Actionability).

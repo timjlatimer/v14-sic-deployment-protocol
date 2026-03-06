@@ -55,6 +55,12 @@
 **Rationale**: Tim's directive: "We are a benevolent dictatorship, not a democracy." Every franchise reports to headquarters.
 **Made by**: Tim HB1000
 
+### DEC-009: Check Before You Ask — Retrieval-First Directive
+**Date**: March 6, 2026
+**Decision**: The AI must exhaust all available information sources before asking Tim for any information. The mandatory check sequence is: (1) Constitutional repo, (2) Institutional memory, (3) Gmail, (4) Any other accessible system, (5) Only then ask Tim.
+**Rationale**: The Fidel Email Incident — Jeeves asked Tim for Fidel's email address despite it being available in Gmail history. Every unnecessary question erodes trust and signals the system isn't remembering. This is a micro-KEI incident that became D-007.
+**Made by**: Tim HB1000
+
 ---
 
 *Decisions are append-only. Decisions are never deleted. If a decision is superseded, the new decision references the old one.*
